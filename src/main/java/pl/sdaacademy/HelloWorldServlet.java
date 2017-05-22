@@ -15,7 +15,8 @@ public class HelloWorldServlet extends HttpServlet {
 
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
-        out.print("Hello Kuba!!");
+        String who = req.getParameter("who") != null ? req.getParameter("who") : getServletConfig().getInitParameter("who");
+        out.print("<h1>Hello " + who + "!</h1>");
 
     }
 

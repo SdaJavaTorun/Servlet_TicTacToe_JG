@@ -1,14 +1,20 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
 
-<web-app>
+
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
   <servlet-name>Hello_World</servlet-name>
   <servlet-class>pl.sdaacademy.HelloWorldServlet</servlet-class>
-</servlet>
+    <init-param>
+      <param-name>who</param-name>
+      <param-value>World</param-value>
+    </init-param>
+  </servlet>
 
   <servlet>
     <servlet-name>Login</servlet-name>
@@ -18,12 +24,36 @@
   <servlet>
     <servlet-name>TicTacToe</servlet-name>
     <servlet-class>pl.sdaacademy.TicTacToeServlet</servlet-class>
+    <init-param>
+      <param-name>player</param-name>
+      <param-value>1</param-value>
+    </init-param>
   </servlet>
+
+  <filter>
+    <filter-name>LogFilter</filter-name>
+    <filter-class>pl.sdaacademy.LoginFilter</filter-class>
+  </filter>
+
+  <filter>
+    <filter-name>AutFilter</filter-name>
+    <filter-class>pl.sdaacademy.AuthenticationFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>LogFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>AutFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <servlet-mapping>
   <servlet-name>Hello_World</servlet-name>
   <url-pattern>/Hello</url-pattern>
-</servlet-mapping>
+  </servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
@@ -36,7 +66,5 @@
   </servlet-mapping>
 
 
+
 </web-app>
-
-
-

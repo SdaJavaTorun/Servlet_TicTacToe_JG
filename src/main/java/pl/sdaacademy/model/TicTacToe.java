@@ -13,6 +13,11 @@ public class TicTacToe {
         return board [x][y] == 0;
     }
 
+    public TicTacToe(int currentPlayer) {
+        this.currentPlayer = currentPlayer;
+
+    }
+
     private void togglePlayer(){
         if(currentPlayer == 1) {
             currentPlayer =2;
